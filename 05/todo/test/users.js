@@ -29,7 +29,9 @@ describe('Users', function() {
     
     it('should load the signup form', function(done) {
       Browser.visit("http://localhost:3000/users/new", function(err, browser) {
+      /*Browser.visit("http://localhost:3000/users/new", {debug: true}, function(err, browser) {*/
         if (err) throw err;
+        /*console.log("VISIT is DONE");*/
         assert.ok(browser.success, 'page loaded');
         assert.equal(browser.text('h1'), 'New User');
         

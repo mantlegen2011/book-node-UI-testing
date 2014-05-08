@@ -33,7 +33,7 @@ describe('feature A', function() {
       console.log('afterEach A.1');
     });
 
-    it('should do A.1.1', function(done) {
+    it('should do A.1.1', function() {
       console.log('A.1.1');
     });
 

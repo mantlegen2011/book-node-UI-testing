@@ -121,22 +121,17 @@ describe('Todo removal form', function() {
 
     it("should allow you to remove", login(function(browser, done) {
 
-      browser.visit('http://localhost:3000/todos', function(err, browser) {
-        if (err) throw err;
-
-        assert.equal(browser.queryAll('#todo-list tr.todo').length, 1);
-      
-        browser.pressButton('#todo-list tr.todo .remove form input[type=submit]',
-          function(err) {
-            if (err) throw err;
-            assert.equal(browser.location.pathname, '/todos');
-            // assert that all todos have been removed
-            assert.equal(browser.queryAll('#todo-list tr').length, 0);
-            done();
-          }
-        );
-
-      });
+      assert.equal(browser.queryAll('#todo-list tr.todo').length, 1);
+    
+      browser.pressButton('#todo-list tr.todo .remove form input[type=submit]',
+        function(err) {
+          if (err) throw err;
+          assert.equal(browser.location.pathname, '/todos');
+          // assert that all todos have been removed
+          assert.equal(browser.queryAll('#todo-list tr').length, 0);
+          done();
+        }
+      );
     }));
 
   });
@@ -151,25 +146,19 @@ describe('Todo removal form', function() {
       it("should allow you to remove one todo item", login(
         function(browser, done) {
 
-          browser.visit('http://localhost:3000/todos', function(err, browser) {
-            if (err) throw err;
-
-            var expectedList = [
-              fixtures.todos.todos[0],
-              fixtures.todos.todos[1],
-              fixtures.todos.todos[2]
-            ];
-
-            var list = browser.queryAll('#todo-list tr');
-            assert.equal(list.length, 3);
-
-            list.forEach(function(todoRow, index) {
+          var expectedList = [
+            fixtures.todos.todos[0],
+            fixtures.todos.todos[1],
+            fixtures.todos.todos[2]
+          ];
+          var list = browser.queryAll('#todo-list tr');
+          assert.equal(list.length, 3);
+          list.forEach(function(todoRow, index) {
               assert.equal(browser.text('.pos', todoRow), index + 1);
               assert.equal(browser.text('.what', todoRow),
                 expectedList[index].what);
-            });
-
-            browser.pressButton(
+          });
+          browser.pressButton(
               '#todo-list tr:nth-child(2) .remove input[type=submit]',
               function(err) {
                 if (err) throw err;
@@ -192,9 +181,7 @@ describe('Todo removal form', function() {
 
                 done();
               }
-            );
-
-          });
+          );
         }
       ));
 

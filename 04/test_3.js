@@ -1,7 +1,7 @@
 describe('some feature', function() {
   
-  before(function runBefore() {
-    console.log('running before function...');
+  beforeEach(function runBeforeEach() {
+    console.log('running beforeEach function...');
   });
 
   it('should do A', function() {
