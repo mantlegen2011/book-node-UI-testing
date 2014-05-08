@@ -9,7 +9,7 @@ var file = new nstatic.Server(__dirname + '/public/');
 
 app.use(flatiron.plugins.http, {
   before: [
-    require('flatware-method-override')(),
+    /*require('flatware-method-override')(),*/
     require('flatware-cookie-parser')(),
     require('flatware-session')(),
     function(req, res) {
